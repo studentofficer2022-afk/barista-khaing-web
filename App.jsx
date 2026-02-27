@@ -37,13 +37,17 @@ const App = () => {
     }
   ];
 
+  // --- EDIT YOUR MENU HERE ---
   const menuItems = [
     { id: 1, name: 'Signature Espresso', price: '3,500 MMK', category: 'Coffee', desc: 'Rich, full-bodied blend roasted in-house.' },
     { id: 2, name: 'Shan Hills Drip', price: '4,000 MMK', category: 'Coffee', desc: 'Single origin beans from local Shan plantations.' },
-    { id: 3, name: 'Matcha Latte', price: '4,500 MMK', category: 'Tea', desc: 'Premium green tea with silky steamed milk.' },
-    { id: 4, name: 'Classic Iced Coffee', price: '3,000 MMK', category: 'Cold', desc: 'Perfect for the sunny Pyin Oo Lwin afternoons.' },
-    { id: 5, name: 'Butter Croissant', price: '2,500 MMK', category: 'Bakery', desc: 'Flaky, buttery, and baked fresh every morning.' },
+    { id: 3, name: 'Highland Latte', price: '4,500 MMK', category: 'Coffee', desc: 'Double shot espresso with creamy local milk.' },
+    { id: 4, name: 'Matcha Latte', price: '4,500 MMK', category: 'Tea', desc: 'Premium green tea with silky steamed milk.' },
+    { id: 5, name: 'Classic Iced Coffee', price: '3,000 MMK', category: 'Cold', desc: 'Perfect for the sunny Pyin Oo Lwin afternoons.' },
     { id: 6, name: 'Strawberry Espresso Tonic', price: '5,000 MMK', category: 'Cold', desc: 'Seasonal specialty using local Pyin Oo Lwin strawberries.' },
+    { id: 7, name: 'Fresh Avocado Shake', price: '4,500 MMK', category: 'Cold', desc: 'Made with seasonal Pyin Oo Lwin avocados.' },
+    { id: 8, name: 'Butter Croissant', price: '2,500 MMK', category: 'Bakery', desc: 'Flaky, buttery, and baked fresh every morning.' },
+    { id: 9, name: 'Shan Coffee Cake', price: '3,800 MMK', category: 'Bakery', desc: 'Moist sponge cake with espresso-infused frosting.' }
   ];
 
   const reviews = [
@@ -83,13 +87,13 @@ const App = () => {
             <span className="text-xl font-bold tracking-tight text-stone-800 uppercase">Barista Khaing</span>
           </div>
           <div className="hidden md:flex space-x-8 text-sm font-medium">
-            <a href="#home" className="hover:text-amber-800 transition">Home</a>
-            <a href="#menu" className="hover:text-amber-800 transition">Menu</a>
-            <a href="#reservations" className="hover:text-amber-800 transition">Reservations</a>
-            <a href="#locations" className="hover:text-amber-800 transition">Locations</a>
+            <a href="#home" className="hover:text-amber-800 transition text-stone-600">Home</a>
+            <a href="#menu" className="hover:text-amber-800 transition text-stone-600">Menu</a>
+            <a href="#reservations" className="hover:text-amber-800 transition text-stone-600">Reservations</a>
+            <a href="#locations" className="hover:text-amber-800 transition text-stone-600">Locations</a>
           </div>
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-stone-800">
               {isMenuOpen ? <X /> : <MenuIcon />}
             </button>
           </div>
@@ -160,12 +164,12 @@ const App = () => {
 
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
             {filteredMenu.map(item => (
-              <div key={item.id} className="flex justify-between items-start border-b border-stone-100 pb-6">
+              <div key={item.id} className="flex justify-between items-start border-b border-stone-100 pb-6 group">
                 <div className="flex-1">
-                  <h4 className="text-xl font-bold text-stone-800">{item.name}</h4>
+                  <h4 className="text-xl font-bold text-stone-800 group-hover:text-amber-800 transition">{item.name}</h4>
                   <p className="text-stone-500 text-sm mt-1">{item.desc}</p>
                 </div>
-                <span className="font-serif font-bold text-amber-900 ml-4">{item.price}</span>
+                <span className="font-serif font-bold text-amber-900 ml-4 whitespace-nowrap">{item.price}</span>
               </div>
             ))}
           </div>
@@ -176,7 +180,7 @@ const App = () => {
       <section id="reservations" className="py-24 px-4 bg-stone-100">
         <div className="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-[3rem] shadow-xl">
           <div className="text-center mb-12">
-            <h3 className="text-4xl font-serif font-bold mb-4">Plan Your Visit</h3>
+            <h3 className="text-4xl font-serif font-bold mb-4 text-stone-800">Plan Your Visit</h3>
             <p className="text-stone-600">Reserve a table at your favorite branch.</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -208,16 +212,16 @@ const App = () => {
       <section className="py-24 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold mb-4">Guest Feedback</h2>
+            <h2 className="text-4xl font-serif font-bold mb-4 text-stone-800">Guest Feedback</h2>
             <div className="flex justify-center gap-1 text-amber-500 mb-2">
               {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" size={24} />)}
             </div>
-            <p className="text-stone-500">4.9/5 stars based on local reviews</p>
+            <p className="text-stone-500 italic">4.9/5 stars based on local reviews</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {reviews.map(review => (
-              <div key={review.id} className="bg-stone-50 p-8 rounded-3xl border border-stone-100">
+              <div key={review.id} className="bg-stone-50 p-8 rounded-3xl border border-stone-100 shadow-sm hover:shadow-md transition">
                 <div className="flex gap-1 text-amber-500 mb-4">
                   {[...Array(review.rating)].map((_, i) => <Star key={i} fill="currentColor" size={16} />)}
                 </div>
@@ -241,10 +245,10 @@ const App = () => {
               Central Branch <Award className="text-amber-500" size={20} />
             </h3>
             <p className="text-stone-300 flex items-center gap-2 mb-2">
-              <MapPin size={18} /> Near Circular Road, Pyin Oo Lwin
+              <MapPin size={18} className="text-amber-500" /> Near Circular Road, Pyin Oo Lwin
             </p>
             <p className="text-stone-300 flex items-center gap-2">
-              <Clock size={18} /> 8:00 AM – 6:00 PM
+              <Clock size={18} className="text-amber-500" /> 8:00 AM – 6:00 PM
             </p>
           </div>
           <div className="bg-stone-800 p-8 rounded-3xl border border-stone-700">
@@ -252,10 +256,10 @@ const App = () => {
               Ye Nge Branch
             </h3>
             <p className="text-stone-300 flex items-center gap-2 mb-2">
-              <MapPin size={18} /> Ye Nge Area, Pyin Oo Lwin
+              <MapPin size={18} className="text-amber-500" /> Ye Nge Area, Pyin Oo Lwin
             </p>
             <p className="text-stone-300 flex items-center gap-2">
-              <Clock size={18} /> 8:00 AM – 8:00 PM
+              <Clock size={18} className="text-amber-500" /> 8:00 AM – 8:00 PM
             </p>
           </div>
         </div>
@@ -272,8 +276,8 @@ const App = () => {
           </div>
           <p className="text-sm">© 2026 Barista Khaing. Designed for Pyin Oo Lwin's best cafe.</p>
           <div className="flex gap-4">
-            <Facebook className="hover:text-amber-800 cursor-pointer" size={20} />
-            <Instagram className="hover:text-amber-800 cursor-pointer" size={20} />
+            <Facebook className="hover:text-amber-800 cursor-pointer transition" size={20} />
+            <Instagram className="hover:text-amber-800 cursor-pointer transition" size={20} />
           </div>
         </div>
       </footer>
